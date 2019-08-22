@@ -1,14 +1,14 @@
 # BarSlide
-�E�f��̃����V�[�����Ō�������ABar�ŃO���X�����点��h�A���h�����`�[�t�B
-�E�͉����𒲐����āA�w�肳�ꂽ�|�C���g�ɃO���X�����点�悤�I
-�E��O�߂��Ă��A�ʂ�߂��Ă�NG�I
-�E���A�������ł��邩���킾�I
-<�J�����ł�>  
+・映画のワンシーン等で見かける、Barでグラスを滑らせる”アレ”がモチーフ。  
+・力加減を調整して、指定されたポイントにグラスを滑らせよう！  
+・手前過ぎても、通り過ぎてもNG！  
+・何連続成功できるか挑戦だ！  
+<開発中です>  
 
-# �r���h���@  
-Unity���g�p���ăr���h���s���Ă��������B  
+# ビルド方法  
+Unityを使用してビルドを行ってください。  
 
-## �r���h�̍ۂ̒��ӎ���  
-Unity�̃o�[�W������ **Unity2019.2.0b7**�@�ȍ~���g�p���Ă��������B
-**Tiny Mode Preview 0.16.1** �ɂĊJ������Ă��܂��B  
-�r���h����ۂɂ́@**Tiny Mode Preview 0.16.1**�@�ȍ~��Import��ɂ���Project��Import���Ă��������B
+## ビルドの際の注意事項  
+Unityのバージョンは **Unity2019.2.0b7**　以降を使用してください。  
+**Tiny Mode Preview 0.16.1** にて開発されています。  
+ビルドする際には　**Tiny Mode Preview 0.16.1**　以降をImport後にこのProjectをImportしてください。
