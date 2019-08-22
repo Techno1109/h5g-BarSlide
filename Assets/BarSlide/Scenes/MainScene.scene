@@ -1,0 +1,83 @@
+{
+    "FileType": "Scene",
+    "Guid": "be74763cf165429b8000ea5896224889",
+    "SerializedVersion": 1,
+    "AssetReferences": [],
+    "Entities": [{
+        "Components": [{
+            "$type": "Unity.Tiny.Core2D.Parent, Unity.Tiny.Core2D"
+        }, {
+            "$type": "Unity.Authoring.Core.SiblingIndex, Unity.Authoring.Core"
+        }, {
+            "$type": "Unity.Entities.EntityGuid, Unity.Entities",
+            "a": 6081880165039489498,
+            "b": 11700264269506560695
+        }, {
+            "$type": "Unity.Tiny.Core2D.Camera2D, Unity.Tiny.Core2D",
+            "halfVerticalSize": 5,
+            "rect": {
+                "width": 1,
+                "height": 1
+            },
+            "backgroundColor": {
+                "r": 1,
+                "g": 0.7362031,
+                "b": 0.2783019,
+                "a": 1
+            },
+            "clearFlags": 1,
+            "cullingMode": 0
+        }, {
+            "$type": "Unity.Tiny.Core2D.Translation, Unity.Tiny.Core2D",
+            "Value": {}
+        }, {
+            "$type": "Unity.Tiny.Core2D.Rotation, Unity.Tiny.Core2D",
+            "Value": {
+                "value": {
+                    "w": 1
+                }
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.NonUniformScale, Unity.Tiny.Core2D",
+            "Value": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
+        }, {
+            "$type": "Unity.Tiny.Core.EntityName, Unity.Tiny.Core",
+            "Elements": [{
+                "c": "C"
+            }, {
+                "c": "a"
+            }, {
+                "c": "m"
+            }, {
+                "c": "e"
+            }, {
+                "c": "r"
+            }, {
+                "c": "a"
+            }]
+        }, {
+            "$type": "Unity.Authoring.Core.ComponentOrder, Unity.Authoring.Core",
+            "Elements": [{
+                "StableTypeHash": 7960064150805274675
+            }, {
+                "StableTypeHash": 793987765392955020
+            }, {
+                "StableTypeHash": 12662904853204722592
+            }, {
+                "StableTypeHash": 742575471234645341
+            }, {
+                "StableTypeHash": 266869500686333426
+            }, {
+                "StableTypeHash": 9104342357061045742
+            }, {
+                "StableTypeHash": 17378348762221180850
+            }, {
+                "StableTypeHash": 874803706151837934
+            }]
+        }]
+    }]
+}
