@@ -2,10 +2,11 @@ using Unity.Entities;
 using Unity.Tiny.Core2D;
 using Unity.Tiny.Core;
 using Unity.Collections;
+using Unity.Mathematics;
 
 namespace RigidBodySystems
 {
-
+    [UpdateInGroup(typeof(RigidBodyGroup))]
     public class RigidBodySystem : ComponentSystem
     {
         const float Gravity = 0.5f;
@@ -62,17 +63,24 @@ namespace RigidBodySystems
 
                 if(NowRigidBody.ActiveVec.x)
                 {
-                    NowTranslation.Value.x += NowRigidBody.Velocity.x;
+                    NowTranslation.Value.x += NowRigidBody.Velocity.x * DeltaTime;
+
+                    NowRigidBody.Velocity.x *= (1-NowRigidBody.Drag);
+
+                    if(NowRigidBody.Velocity.x<0.003)
+                    {
+                        NowRigidBody.Velocity.x = 0;
+                    }
                 }
 
                 if (NowRigidBody.ActiveVec.y)
                 {
-                    NowTranslation.Value.y += NowRigidBody.Velocity.y;
+                    NowTranslation.Value.y += NowRigidBody.Velocity.y * DeltaTime;
                 }
 
                 if (NowRigidBody.ActiveVec.z)
                 {
-                    NowTranslation.Value.z += NowRigidBody.Velocity.z;
+                    NowTranslation.Value.z += NowRigidBody.Velocity.z * DeltaTime;
                 }
 
                 RigidBodyArray[EntityNum] = NowRigidBody;
@@ -88,5 +96,6 @@ namespace RigidBodySystems
             TranslationArray.Dispose();
             RigidBodyArray.Dispose();
         }
+
     }
 }
