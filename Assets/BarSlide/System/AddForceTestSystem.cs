@@ -16,6 +16,10 @@ public class AddForceTestSystem : ComponentSystem
 
     EntityQuery GlassQuery;
 
+    EntityQueryDesc GageDesc;
+
+    EntityQuery GageQuery;
+
     protected override void OnCreate()
     {
         /*ECSにおいて、クエリの作成はOnCreateで行うのが定石となっています*/
@@ -27,19 +31,27 @@ public class AddForceTestSystem : ComponentSystem
 
         GlassDesc = new EntityQueryDesc()
         {
-            All = new ComponentType[] { typeof(GlassTag), typeof(RigidBody) },
+            All = new ComponentType[] { typeof(GlassTag), typeof(RigidBody),typeof(GlassComponent) },
+        };
+
+        GageDesc = new EntityQueryDesc()
+        {
+            All = new ComponentType[] { typeof(GageComponent)},
         };
 
         TestButtonQuery = GetEntityQuery(TestButtonDesc);
         GlassQuery = GetEntityQuery(GlassDesc);
+        GageQuery = GetEntityQuery(GageDesc);
     }
     protected override void OnUpdate()
     {
         NativeArray<PointerInteraction> MoveButtons = TestButtonQuery.ToComponentDataArray<PointerInteraction>(Allocator.TempJob);
+        NativeArray<GageComponent> GageDatas = GageQuery.ToComponentDataArray<GageComponent>(Allocator.TempJob);
 
-        if (MoveButtons.Length <= 0)
+        if (MoveButtons.Length <= 0 || GageDatas.Length<=0)
         {
             MoveButtons.Dispose();
+            GageDatas.Dispose();
             return;
         }
 
@@ -50,14 +62,52 @@ public class AddForceTestSystem : ComponentSystem
             InputButton = InputButton || MoveButtons[i].clicked;
         }
 
-        Entities.With(GlassQuery).ForEach((ref RigidBody Rigid) =>
+
+        Entities.With(GlassQuery).ForEach((ref RigidBody Rigid, ref GlassComponent GlassData) =>
         {
-            if (InputButton == true && Rigid.IsActive)
+            if (GlassData.charging)
             {
-                Rigid.Velocity.x += 3f;
+                if (InputButton)
+                {
+                    GlassData.charging = false;
+                    Rigid.Velocity.x += GlassData.NowValue;
+                }
+                else
+                {
+
+                    GlassData.NowValue += GlassData.AddSpeed;
+
+                    if (GlassData.NowValue >= GlassData.MaxValue)
+                    {
+                        GlassData.NowValue = GlassData.MaxValue;
+                        GlassData.AddSpeed *= -1;
+                    }
+                    else if (0 >= GlassData.NowValue)
+                    {
+                        GlassData.NowValue = 0;
+                        GlassData.AddSpeed *= -1;
+                    }
+
+                }
+            }
+            else
+            {
+                if (InputButton)
+                {
+                    GlassData.charging = true;
+                    GlassData.NowValue = 0;
+                    GlassData.AddSpeed = GlassData.AddSpeed < 0 ? GlassData.AddSpeed * -1 : GlassData.AddSpeed;
+                }
             }
 
+            var Tmp = GageDatas[0];
+            Tmp.NowValue = GlassData.NowValue;
+            GageDatas[0] = Tmp;
         });
 
+        GageQuery.CopyFromComponentDataArray(GageDatas);
+
+        MoveButtons.Dispose();
+        GageDatas.Dispose();
     }
 }
