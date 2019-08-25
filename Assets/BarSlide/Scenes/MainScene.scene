@@ -3,7 +3,8 @@
     "Guid": "be74763cf165429b8000ea5896224889",
     "SerializedVersion": 1,
     "AssetReferences": [
-        { "Guid": "4c843ca897a02444ca72394db8e4ae20", "FileId": 21300000, "Type": 3}],
+        { "Guid": "4c843ca897a02444ca72394db8e4ae20", "FileId": 21300000, "Type": 3},
+        { "Guid": "4c843ca897a02444ca72394db8e4ae20", "FileId": 2800000, "Type": 3}],
     "Entities": [{
         "Components": [{
             "$type": "Unity.Tiny.Core2D.Parent, Unity.Tiny.Core2D"
@@ -217,6 +218,113 @@
         }]
     }, {
         "Components": [{
+            "$type": "Unity.Tiny.Core2D.Parent, Unity.Tiny.Core2D",
+            "Value": "9d83f7687cf2480789e4cea18ffbb675"
+        }, {
+            "$type": "Unity.Tiny.Core2D.Sprite2D, Unity.Tiny.Sprite2D",
+            "image": "3d589df0a50db8fa38373496b267990b",
+            "imageRegion": {},
+            "pivot": {}
+        }, {
+            "$type": "Unity.Tiny.Core2D.Sprite2DRenderer, Unity.Tiny.Sprite2D",
+            "sprite": "71e8fd70971c451e5cb1229c353a02e6",
+            "color": {
+                "r": 0.3803922,
+                "g": 1,
+                "b": 0.8694944,
+                "a": 1
+            },
+            "blending": 0
+        }, {
+            "$type": "Unity.Authoring.Core.SiblingIndex, Unity.Authoring.Core"
+        }, {
+            "$type": "Unity.Tiny.HitBox2D.Sprite2DRendererHitBox2D, Unity.Tiny.HitBox2D"
+        }, {
+            "$type": "Unity.Entities.EntityGuid, Unity.Entities",
+            "a": 9690480053090730761,
+            "b": 10066634668899244152
+        }, {
+            "$type": "Unity.Tiny.Core2D.Translation, Unity.Tiny.Core2D",
+            "Value": {
+                "y": -5
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.Rotation, Unity.Tiny.Core2D",
+            "Value": {
+                "value": {
+                    "w": 1
+                }
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.NonUniformScale, Unity.Tiny.Core2D",
+            "Value": {
+                "x": 0.1,
+                "y": 1,
+                "z": 1
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.LayerSorting, Unity.Tiny.Core2D",
+            "order": 2
+        }, {
+            "$type": "Unity.Tiny.HitBox2D.HitBoxOverlap, Unity.Tiny.HitBox2D",
+            "Elements": []
+        }, {
+            "$type": "Unity.Tiny.Core.EntityName, Unity.Tiny.Core",
+            "Elements": [{
+                "c": "O"
+            }, {
+                "c": "K"
+            }, {
+                "c": "A"
+            }, {
+                "c": "r"
+            }, {
+                "c": "e"
+            }, {
+                "c": "a"
+            }, {
+                "c": " "
+            }, {
+                "c": "("
+            }, {
+                "c": "1"
+            }, {
+                "c": ")"
+            }]
+        }, {
+            "$type": "Unity.Authoring.Core.ComponentOrder, Unity.Authoring.Core",
+            "Elements": [{
+                "StableTypeHash": 7960064150805274675
+            }, {
+                "StableTypeHash": 793987765392955020
+            }, {
+                "StableTypeHash": 12662904853204722592
+            }, {
+                "StableTypeHash": 266869500686333426
+            }, {
+                "StableTypeHash": 9104342357061045742
+            }, {
+                "StableTypeHash": 17378348762221180850
+            }, {
+                "StableTypeHash": 874803706151837934
+            }, {
+                "StableTypeHash": 14532146675218703721
+            }, {
+                "StableTypeHash": 8964035444447794530
+            }, {
+                "StableTypeHash": 11313670787958164107
+            }, {
+                "StableTypeHash": 16791256614846730296
+            }, {
+                "StableTypeHash": 12932679046359085526
+            }, {
+                "StableTypeHash": 5463421553099060761
+            }]
+        }, {
+            "$type": "CheckLineTag, BarSlide"
+        }]
+    }, {
+        "Components": [{
             "$type": "Unity.Tiny.Core2D.Parent, Unity.Tiny.Core2D"
         }, {
             "$type": "Unity.Tiny.Core2D.Sprite2DRenderer, Unity.Tiny.Sprite2D",
@@ -256,8 +364,7 @@
                 "z": 1
             }
         }, {
-            "$type": "Unity.Tiny.Core2D.LayerSorting, Unity.Tiny.Core2D",
-            "order": 2
+            "$type": "Unity.Tiny.Core2D.LayerSorting, Unity.Tiny.Core2D"
         }, {
             "$type": "Unity.Tiny.Core.EntityName, Unity.Tiny.Core",
             "Elements": [{
@@ -306,6 +413,10 @@
                 "a": 1
             },
             "blending": 0
+        }, {
+            "$type": "GlassComponent, BarSlide",
+            "AddSpeed": 1,
+            "MaxValue": 3
         }, {
             "$type": "RigidBodySystems.RigidBody, BarSlide",
             "IsActive": true,
@@ -375,9 +486,115 @@
                 "StableTypeHash": 5982243941043927423
             }, {
                 "StableTypeHash": 13755712660880076922
+            }, {
+                "StableTypeHash": 11327923805599994460
+            }, {
+                "StableTypeHash": 13596211823930895157
+            }, {
+                "StableTypeHash": 13170622585994186519
             }]
         }, {
             "$type": "GlassTag, BarSlide"
+        }]
+    }, {
+        "Components": [{
+            "$type": "Unity.Tiny.Core2D.Parent, Unity.Tiny.Core2D"
+        }, {
+            "$type": "Unity.Tiny.Core2D.Sprite2D, Unity.Tiny.Sprite2D",
+            "image": "3d589df0a50db8fa38373496b267990b",
+            "imageRegion": {},
+            "pivot": {}
+        }, {
+            "$type": "Unity.Tiny.Core2D.Sprite2DRenderer, Unity.Tiny.Sprite2D",
+            "sprite": "71e8fd70971c451e5cb1229c353a02e6",
+            "color": {
+                "r": 1,
+                "g": 0.3820755,
+                "b": 0.4153779,
+                "a": 1
+            },
+            "blending": 0
+        }, {
+            "$type": "Unity.Authoring.Core.SiblingIndex, Unity.Authoring.Core",
+            "Index": 4
+        }, {
+            "$type": "Unity.Tiny.HitBox2D.Sprite2DRendererHitBox2D, Unity.Tiny.HitBox2D"
+        }, {
+            "$type": "Unity.Entities.EntityGuid, Unity.Entities",
+            "a": 12783559706208520827,
+            "b": 10885602541207021785
+        }, {
+            "$type": "Unity.Tiny.Core2D.Translation, Unity.Tiny.Core2D",
+            "Value": {
+                "x": 2.01,
+                "y": -4.5
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.Rotation, Unity.Tiny.Core2D",
+            "Value": {
+                "value": {
+                    "w": 1
+                }
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.NonUniformScale, Unity.Tiny.Core2D",
+            "Value": {
+                "x": 0.4498608,
+                "y": 0.2,
+                "z": 1
+            }
+        }, {
+            "$type": "Unity.Tiny.Core2D.LayerSorting, Unity.Tiny.Core2D",
+            "order": 1
+        }, {
+            "$type": "Unity.Tiny.HitBox2D.HitBoxOverlap, Unity.Tiny.HitBox2D",
+            "Elements": []
+        }, {
+            "$type": "Unity.Tiny.Core.EntityName, Unity.Tiny.Core",
+            "Elements": [{
+                "c": "O"
+            }, {
+                "c": "K"
+            }, {
+                "c": "A"
+            }, {
+                "c": "r"
+            }, {
+                "c": "e"
+            }, {
+                "c": "a"
+            }]
+        }, {
+            "$type": "Unity.Authoring.Core.ComponentOrder, Unity.Authoring.Core",
+            "Elements": [{
+                "StableTypeHash": 7960064150805274675
+            }, {
+                "StableTypeHash": 793987765392955020
+            }, {
+                "StableTypeHash": 12662904853204722592
+            }, {
+                "StableTypeHash": 266869500686333426
+            }, {
+                "StableTypeHash": 9104342357061045742
+            }, {
+                "StableTypeHash": 17378348762221180850
+            }, {
+                "StableTypeHash": 874803706151837934
+            }, {
+                "StableTypeHash": 348282248794135210
+            }, {
+                "StableTypeHash": 14532146675218703721
+            }, {
+                "StableTypeHash": 8964035444447794530
+            }, {
+                "StableTypeHash": 11313670787958164107
+            }, {
+                "StableTypeHash": 16791256614846730296
+            }, {
+                "StableTypeHash": 12932679046359085526
+            }]
+        }, {
+            "$type": "OKAreaTag, BarSlide"
         }]
     }, {
         "Components": [{
@@ -587,6 +804,11 @@
         }, {
             "$type": "Unity.Tiny.UIControls.PointerInteraction, Unity.Tiny.UIControls"
         }, {
+            "$type": "GageComponent, BarSlide",
+            "MaxValue": 3,
+            "FirstLength": 100,
+            "FistPos": 110
+        }, {
             "$type": "Unity.Authoring.Core.SiblingIndex, Unity.Authoring.Core",
             "Index": 1
         }, {
@@ -600,12 +822,12 @@
                 "y": 0.5
             },
             "sizeDelta": {
-                "x": 85.78,
+                "x": 100,
                 "y": 20
             },
             "anchoredPosition": {
-                "x": -2.11,
-                "y": -134
+                "x": 110,
+                "y": 56
             },
             "pivot": {
                 "x": 0.5,
@@ -618,8 +840,8 @@
         }, {
             "$type": "Unity.Tiny.Core2D.Translation, Unity.Tiny.Core2D",
             "Value": {
-                "x": -2.11,
-                "y": -134
+                "x": 116.11,
+                "y": 56
             }
         }, {
             "$type": "Unity.Tiny.Core2D.Rotation, Unity.Tiny.Core2D",
@@ -689,6 +911,8 @@
                 "StableTypeHash": 5378123052767168278
             }, {
                 "StableTypeHash": 855062035696521905
+            }, {
+                "StableTypeHash": 13284548340530419444
             }]
         }, {
             "$type": "TestButtonTag, BarSlide"

@@ -65,17 +65,24 @@ public class AddForceTestSystem : ComponentSystem
 
         Entities.With(GlassQuery).ForEach((ref RigidBody Rigid, ref GlassComponent GlassData) =>
         {
+            if(GlassData.Active)
+            {
+                return;
+            }
+
+            float DltTime = World.TinyEnvironment().fixedFrameDeltaTime;
             if (GlassData.charging)
             {
                 if (InputButton)
                 {
                     GlassData.charging = false;
+                    GlassData.Active = true;
                     Rigid.Velocity.x += GlassData.NowValue;
                 }
                 else
                 {
 
-                    GlassData.NowValue += GlassData.AddSpeed;
+                    GlassData.NowValue += GlassData.AddSpeed * DltTime;
 
                     if (GlassData.NowValue >= GlassData.MaxValue)
                     {
