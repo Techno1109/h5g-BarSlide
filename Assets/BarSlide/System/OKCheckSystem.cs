@@ -15,6 +15,11 @@ public class OKCheckSystem : ComponentSystem
     EntityQueryDesc OkAreaDesc;
     EntityQuery OkAreaQuery;
 
+    EntityQueryDesc ScoreDesc;
+    EntityQuery ScoreQuery;
+
+    Unity.Mathematics.Random RandomData;
+
     protected override void OnCreate()
     {
         /*ECSにおいて、クエリの作成はOnCreateで行うのが定石となっています*/
@@ -34,9 +39,18 @@ public class OKCheckSystem : ComponentSystem
             All = new ComponentType[] { typeof(OKAreaTag) },
         };
 
+        ScoreDesc = new EntityQueryDesc()
+        {
+            All = new ComponentType[] { typeof(ScoreComponent) },
+        };
+
+
         GlassQuery = GetEntityQuery(GlassDesc);
         CheckLineQuery = GetEntityQuery(CheckLineDesc);
         OkAreaQuery = GetEntityQuery(OkAreaDesc);
+        ScoreQuery = GetEntityQuery(ScoreDesc);
+
+        RandomData = new Unity.Mathematics.Random(3158456);
     }
 
     protected override void OnUpdate()
@@ -77,6 +91,8 @@ public class OKCheckSystem : ComponentSystem
                 //成功
                 Trans.Value.x = 0;
                 GlassData.Active = false;
+                ScoreUp();
+                RandomSet();
             }
             else
             {
@@ -87,5 +103,24 @@ public class OKCheckSystem : ComponentSystem
 
         OkArea.Dispose();
         CheckLine.Dispose();
+    }
+
+    private void ScoreUp()
+    {
+        Entities.With(ScoreQuery).ForEach((Entity ThisEntity, ref ScoreComponent ScoreData) =>
+        {
+            ScoreData.Score += 1;
+            RandomData.InitState((uint)(ScoreData.Score*RandomData.NextInt(0,1000)) );
+        });
+    }
+
+    private void RandomSet()
+    {
+        Entities.With(OkAreaQuery).ForEach((Entity ThisEntity,ref Translation Trans ,ref NonUniformScale Scale ,ref OKAreaTag AreaData) =>
+        {
+            Trans.Value.x = RandomData.NextFloat(AreaData.MinPos,AreaData.MaxPos);
+
+            Scale.Value.x = RandomData.NextFloat(AreaData.MinPos, AreaData.MaxPos);
+        });
     }
 }

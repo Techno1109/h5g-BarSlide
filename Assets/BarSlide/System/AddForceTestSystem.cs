@@ -1,9 +1,9 @@
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Tiny.Core;
 using Unity.Collections;
 using Unity.Tiny.UIControls;
 using RigidBodySystems;
+using Unity.Tiny.Input;
 
 [UpdateBefore(typeof(RigidBodyGroup))]
 public class AddForceTestSystem : ComponentSystem
@@ -19,6 +19,9 @@ public class AddForceTestSystem : ComponentSystem
     EntityQueryDesc GageDesc;
 
     EntityQuery GageQuery;
+
+    EntityQueryDesc PointerDesc;
+    EntityQuery PointerQuery;
 
     protected override void OnCreate()
     {
@@ -48,20 +51,24 @@ public class AddForceTestSystem : ComponentSystem
         NativeArray<PointerInteraction> MoveButtons = TestButtonQuery.ToComponentDataArray<PointerInteraction>(Allocator.TempJob);
         NativeArray<GageComponent> GageDatas = GageQuery.ToComponentDataArray<GageComponent>(Allocator.TempJob);
 
+       var Input =EntityManager.World.GetExistingSystem<InputSystem>();
+
         if (MoveButtons.Length <= 0 || GageDatas.Length<=0)
         {
             MoveButtons.Dispose();
             GageDatas.Dispose();
+
             return;
         }
 
         bool InputButton = false;
 
-        for (int i = 0; i < MoveButtons.Length; i++)
-        {
-            InputButton = InputButton || MoveButtons[i].clicked;
-        }
+        //for (int i = 0; i < MoveButtons.Length; i++)
+        //{
+        //    InputButton = InputButton || MoveButtons[i].clicked;
+        //}
 
+        InputButton = Input.GetMouseButtonDown(0);
 
         Entities.With(GlassQuery).ForEach((ref RigidBody Rigid, ref GlassComponent GlassData) =>
         {
