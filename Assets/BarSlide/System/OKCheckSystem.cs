@@ -1,9 +1,11 @@
 using Unity.Entities;
+using Unity.Tiny.Core;
 using Unity.Tiny.Core2D;
 using Unity.Tiny.HitBox2D;
 using RigidBodySystems;
 using Unity.Collections;
 
+[UpdateAfter(typeof(AddForceTestSystem))]
 public class OKCheckSystem : ComponentSystem
 {
     EntityQueryDesc GlassDesc;
@@ -15,8 +17,9 @@ public class OKCheckSystem : ComponentSystem
     EntityQueryDesc OkAreaDesc;
     EntityQuery OkAreaQuery;
 
-    EntityQueryDesc ScoreDesc;
-    EntityQuery ScoreQuery;
+
+    EntityQueryDesc ResultDesc;
+    EntityQuery ResultQuery;
 
     Unity.Mathematics.Random RandomData;
 
@@ -39,16 +42,16 @@ public class OKCheckSystem : ComponentSystem
             All = new ComponentType[] { typeof(OKAreaTag) },
         };
 
-        ScoreDesc = new EntityQueryDesc()
-        {
-            All = new ComponentType[] { typeof(ScoreComponent) },
-        };
 
+        ResultDesc = new EntityQueryDesc()
+        {
+            All = new ComponentType[] { typeof(ResultTag) , typeof(Disabled)},
+        };
 
         GlassQuery = GetEntityQuery(GlassDesc);
         CheckLineQuery = GetEntityQuery(CheckLineDesc);
         OkAreaQuery = GetEntityQuery(OkAreaDesc);
-        ScoreQuery = GetEntityQuery(ScoreDesc);
+        ResultQuery = GetEntityQuery(ResultDesc);
 
         RandomData = new Unity.Mathematics.Random(3158456);
     }
@@ -91,13 +94,22 @@ public class OKCheckSystem : ComponentSystem
                 //¬Œ÷
                 Trans.Value.x = 0;
                 GlassData.Active = false;
-                ScoreUp();
+                ScoreUp(Trans.Value.x);
                 RandomSet();
             }
             else
             {
                 //Ž¸”s
                 GlassData.EndTag = true;
+                //Result‚ð—LŒø‰»
+                Entities.With(ResultQuery).ForEach((Entity ResultEntity) =>
+                {
+                    EntityManager.SetEnabled(ResultEntity,true);
+                });
+                var GameStats = World.TinyEnvironment();
+                var Config = GameStats.GetConfigData<GameState>();
+                Config.End = true;
+                GameStats.SetConfigData(Config);
             }
         });
 
@@ -105,22 +117,35 @@ public class OKCheckSystem : ComponentSystem
         CheckLine.Dispose();
     }
 
-    private void ScoreUp()
+    private void ScoreUp(float Pos)
     {
-        Entities.With(ScoreQuery).ForEach((Entity ThisEntity, ref ScoreComponent ScoreData) =>
+        var GameStats = World.TinyEnvironment();
+        var Config = GameStats.GetConfigData<GameState>();
+
+        RandomData.InitState((uint)(Config.Score * RandomData.NextInt(0, 1000) * Pos));
+
+        Config.Score += 1;
+        if (Config.Score%3 == 0)
         {
-            ScoreData.Score += 1;
-            RandomData.InitState((uint)(ScoreData.Score*RandomData.NextInt(0,1000)) );
-        });
+            if(Config.Lv<0.4f)
+            {
+                Config.Lv += 0.1f;
+            }
+        }
+        GameStats.SetConfigData(Config);
     }
 
-    private void RandomSet()
+    public void RandomSet()
     {
+        var GameStats = World.TinyEnvironment();
+        var Config = GameStats.GetConfigData<GameState>();
+        float Base = 1 - Config.Lv;
         Entities.With(OkAreaQuery).ForEach((Entity ThisEntity,ref Translation Trans ,ref NonUniformScale Scale ,ref OKAreaTag AreaData) =>
         {
-            Trans.Value.x = RandomData.NextFloat(AreaData.MinPos,AreaData.MaxPos);
-
-            Scale.Value.x = RandomData.NextFloat(AreaData.MinPos, AreaData.MaxPos);
+            float BaseScale = RandomData.NextFloat(AreaData.MinSize * Base, AreaData.MaxSize * Base);
+            float BasePos = BaseScale / 2;
+            Scale.Value.x = BaseScale;
+            Trans.Value.x = RandomData.NextFloat(AreaData.MinPos+BasePos,AreaData.MaxPos-BasePos);
         });
     }
 }

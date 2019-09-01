@@ -8,10 +8,6 @@ using Unity.Tiny.Input;
 [UpdateBefore(typeof(RigidBodyGroup))]
 public class AddForceTestSystem : ComponentSystem
 {
-    EntityQueryDesc TestButtonDesc;
-
-    EntityQuery TestButtonQuery;
-
     EntityQueryDesc GlassDesc;
 
     EntityQuery GlassQuery;
@@ -27,11 +23,6 @@ public class AddForceTestSystem : ComponentSystem
     {
         /*ECSにおいて、クエリの作成はOnCreateで行うのが定石となっています*/
 
-        TestButtonDesc = new EntityQueryDesc()
-        {
-            All = new ComponentType[] { typeof(TestButtonTag), typeof(PointerInteraction) },
-        };
-
         GlassDesc = new EntityQueryDesc()
         {
             All = new ComponentType[] { typeof(GlassTag), typeof(RigidBody),typeof(GlassComponent) },
@@ -42,31 +33,23 @@ public class AddForceTestSystem : ComponentSystem
             All = new ComponentType[] { typeof(GageComponent)},
         };
 
-        TestButtonQuery = GetEntityQuery(TestButtonDesc);
         GlassQuery = GetEntityQuery(GlassDesc);
         GageQuery = GetEntityQuery(GageDesc);
     }
     protected override void OnUpdate()
     {
-        NativeArray<PointerInteraction> MoveButtons = TestButtonQuery.ToComponentDataArray<PointerInteraction>(Allocator.TempJob);
         NativeArray<GageComponent> GageDatas = GageQuery.ToComponentDataArray<GageComponent>(Allocator.TempJob);
 
        var Input =EntityManager.World.GetExistingSystem<InputSystem>();
 
-        if (MoveButtons.Length <= 0 || GageDatas.Length<=0)
+        if (GageDatas.Length<=0)
         {
-            MoveButtons.Dispose();
             GageDatas.Dispose();
 
             return;
         }
 
         bool InputButton = false;
-
-        //for (int i = 0; i < MoveButtons.Length; i++)
-        //{
-        //    InputButton = InputButton || MoveButtons[i].clicked;
-        //}
 
         InputButton = Input.GetMouseButtonDown(0);
 
@@ -121,7 +104,6 @@ public class AddForceTestSystem : ComponentSystem
 
         GageQuery.CopyFromComponentDataArray(GageDatas);
 
-        MoveButtons.Dispose();
         GageDatas.Dispose();
     }
 }

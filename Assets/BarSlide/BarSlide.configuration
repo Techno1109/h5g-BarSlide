@@ -5,6 +5,8 @@
     "AssetReferences": [],
     "Entities": [{
         "Components": [{
+            "$type": "GameState, BarSlide"
+        }, {
             "$type": "Unity.Entities.EntityGuid, Unity.Entities",
             "a": 9015120429785434619,
             "b": 12763266793433721214
@@ -35,6 +37,10 @@
                 "StableTypeHash": 7960064150805274675
             }, {
                 "StableTypeHash": 12662904853204722592
+            }, {
+                "StableTypeHash": 11831671624077757850
+            }, {
+                "StableTypeHash": 3071923676708803630
             }]
         }, {
             "$type": "Unity.Authoring.Core.ConfigurationTag, Unity.Authoring.Core"
