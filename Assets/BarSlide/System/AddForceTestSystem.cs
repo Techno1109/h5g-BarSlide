@@ -67,12 +67,12 @@ public class AddForceTestSystem : ComponentSystem
                 {
                     GlassData.charging = false;
                     GlassData.Active = true;
-                    Rigid.Velocity.x += GlassData.NowValue;
+                    Rigid.Velocity.x += GlassData.NowValue*2.4f;
                 }
                 else
                 {
 
-                    GlassData.NowValue += GlassData.AddSpeed * DltTime;
+                    GlassData.NowValue += GlassData.AddSpeed * DltTime*3;
 
                     if (GlassData.NowValue >= GlassData.MaxValue)
                     {

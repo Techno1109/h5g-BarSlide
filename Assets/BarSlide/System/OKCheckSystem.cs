@@ -4,6 +4,7 @@ using Unity.Tiny.Core2D;
 using Unity.Tiny.HitBox2D;
 using RigidBodySystems;
 using Unity.Collections;
+using Unity.Tiny.UILayout;
 
 [UpdateAfter(typeof(AddForceTestSystem))]
 public class OKCheckSystem : ComponentSystem
@@ -34,7 +35,7 @@ public class OKCheckSystem : ComponentSystem
 
         CheckLineDesc = new EntityQueryDesc()
         {
-            All = new ComponentType[] {typeof(CheckLineTag) },
+            All = new ComponentType[] {typeof(CheckLineTag),typeof(HitBoxOverlap) },
         };
 
         OkAreaDesc = new EntityQueryDesc()
@@ -45,8 +46,9 @@ public class OKCheckSystem : ComponentSystem
 
         ResultDesc = new EntityQueryDesc()
         {
-            All = new ComponentType[] { typeof(ResultTag) , typeof(Disabled)},
+            All = new ComponentType[] { typeof(ResultTag) , typeof(RectTransform)},
         };
+
 
         GlassQuery = GetEntityQuery(GlassDesc);
         CheckLineQuery = GetEntityQuery(CheckLineDesc);
@@ -73,25 +75,26 @@ public class OKCheckSystem : ComponentSystem
                 return;
             }
 
-            var HitEntity = EntityManager.GetBuffer<HitBoxOverlap>(CheckLine[0]);
-
             bool HitResultFlag = false;
-
-
-            for (int k = 0; k < HitEntity.Length; k++)
+            if (CheckLine.Length > 0)
             {
-                //サーチ対象のEntityが含まれていた場合、当たっていることになる。
-                if (OkArea[0]== HitEntity[k].otherEntity)
+                var HitEntity = EntityManager.GetBuffer<HitBoxOverlap>(CheckLine[0]);
+
+                for (int k = 0; k < HitEntity.Length; k++)
                 {
-                    //当たった場合、一度フラグをTrueにしてBreak；
-                    HitResultFlag = true;
-                    break;
+                     //サーチ対象のEntityが含まれていた場合、当たっていることになる。
+                    if (OkArea[0] == HitEntity[k].otherEntity)
+                    {
+                        //当たった場合、一度フラグをTrueにしてBreak；
+                        HitResultFlag = true;
+                        break;
+                    }
                 }
             }
 
-            if(HitResultFlag==true)
+            if (HitResultFlag == true)
             {
-                //成功
+                ////成功
                 Trans.Value.x = 0;
                 GlassData.Active = false;
                 ScoreUp(Trans.Value.x);
@@ -102,10 +105,12 @@ public class OKCheckSystem : ComponentSystem
                 //失敗
                 GlassData.EndTag = true;
                 //Resultを有効化
-                Entities.With(ResultQuery).ForEach((Entity ResultEntity) =>
+                //リザルトウィンドウを無効化
+                Entities.With(ResultQuery).ForEach((ref RectTransform RecTrans) =>
                 {
-                    EntityManager.SetEnabled(ResultEntity,true);
+                    RecTrans.anchoredPosition.y = 0;
                 });
+
                 var GameStats = World.TinyEnvironment();
                 var Config = GameStats.GetConfigData<GameState>();
                 Config.End = true;
@@ -122,17 +127,18 @@ public class OKCheckSystem : ComponentSystem
         var GameStats = World.TinyEnvironment();
         var Config = GameStats.GetConfigData<GameState>();
 
-        RandomData.InitState((uint)(Config.Score * RandomData.NextInt(0, 1000) * Pos));
-
         Config.Score += 1;
-        if (Config.Score%3 == 0)
+        if (Config.Score % 3 == 0)
         {
-            if(Config.Lv<0.4f)
+            if (Config.Lv < 0.4f)
             {
                 Config.Lv += 0.1f;
             }
         }
         GameStats.SetConfigData(Config);
+        //スコアテキストの更新
+        var ScoreDraw = World.GetExistingSystem<ScoreDrawSystem>();
+        ScoreDraw.RefrehScoreText();
     }
 
     public void RandomSet()

@@ -2,8 +2,6 @@ using Unity.Entities;
 using Unity.Tiny.Core;
 using Unity.Tiny.UILayout;
 using Unity.Tiny.Core2D;
-using Unity.Tiny.HitBox2D;
-using Unity.Mathematics;
 using Unity.Collections;
 using Unity.Tiny.UIControls;
 
@@ -31,7 +29,7 @@ public class ReplaySystem : ComponentSystem
 
         ResultDesc = new EntityQueryDesc()
         {
-            All = new ComponentType[] { typeof(ResultTag), typeof(Disabled) },
+            All = new ComponentType[] { typeof(ResultTag) ,typeof(RectTransform)},
         };
 
         GlassDesc = new EntityQueryDesc()
@@ -53,7 +51,7 @@ public class ReplaySystem : ComponentSystem
         var GameStats = World.TinyEnvironment();
         var Config = GameStats.GetConfigData<GameState>();
 
-        if(!Config.End)
+        if (!Config.End)
         {
             return;
         }
@@ -73,30 +71,36 @@ public class ReplaySystem : ComponentSystem
             InputButton = InputButton || ReplayButtons[i].clicked;
         }
 
-        if(InputButton)
+        if (InputButton)
         {
             //グラスをリセット
             Entities.With(GlassQuery).ForEach((ref GlassComponent GlassData, ref Translation Trans) =>
             {
                 Trans.Value.x = 0;
                 GlassData.Active = false;
+                GlassData.EndTag = false;
             });
 
             //ゲームコンフィグをリセット
             Config.Score = 0;
             Config.Lv = 0;
+            Config.End = false;
             GameStats.SetConfigData(Config);
 
 
             //リザルトウィンドウを無効化
-            Entities.With(ResultQuery).ForEach((Entity ThisEntity) =>
+            Entities.With(ResultQuery).ForEach((ref RectTransform RecTrans) =>
             {
-                EntityManager.SetEnabled(ThisEntity, false);
+                RecTrans.anchoredPosition.y = 600;
             });
 
             //成功エリアの再設置
             var PutSystem = World.GetExistingSystem<OKCheckSystem>();
             PutSystem.RandomSet();
+
+            //スコアテキストの更新
+            var ScoreDraw = World.GetExistingSystem<ScoreDrawSystem>();
+            ScoreDraw.RefrehScoreText();
         }
     }
 }

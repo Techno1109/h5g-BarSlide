@@ -31,15 +31,15 @@ public class GageDrawSystem : ComponentSystem
 
             //最終的な場所を算出
             //まず、0の状態の場所を算出
-            float PosX = GageData.FistPos - (Value * (GageData.MaxValue / 2));
+            float PosX = GageData.FistPos - (Value * (GageData.MaxValue)/2);
 
             //足された分のずらす場所を算出
-            PosX += (Value * GageData.NowValue) / 2;
+            PosX += (Length) / 2;
 
             //RectTransFormに値を挿入
 
             //長さをまず設定
-            RectTransData.sizeDelta.x = (Value * GageData.NowValue);
+            RectTransData.sizeDelta.x = (Length);
 
             //X座標を設定
             RectTransData.anchoredPosition.x = PosX;
