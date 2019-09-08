@@ -579,27 +579,13 @@
         }, {
             "$type": "Unity.Tiny.Core.EntityName, Unity.Tiny.Core",
             "Elements": [{
-                "c": "R"
+                "c": "I"
             }, {
-                "c": "E"
+                "c": "n"
             }, {
-                "c": "P"
+                "c": "f"
             }, {
-                "c": "L"
-            }, {
-                "c": "A"
-            }, {
-                "c": "Y"
-            }, {
-                "c": "?"
-            }, {
-                "c": " "
-            }, {
-                "c": "("
-            }, {
-                "c": "1"
-            }, {
-                "c": ")"
+                "c": "o"
             }]
         }, {
             "$type": "Unity.Authoring.Core.ComponentOrder, Unity.Authoring.Core",
@@ -2064,7 +2050,7 @@
             "blending": 0
         }, {
             "$type": "GageComponent, BarSlide",
-            "MaxValue": 5,
+            "MaxValue": 3,
             "FirstLength": 350
         }, {
             "$type": "Unity.Authoring.Core.SiblingIndex, Unity.Authoring.Core",
