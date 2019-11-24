@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "buildprogram.gen", "Library\DotsRuntimeBuild\buildprogram.gen.csproj", "{96030438-8AA4-A76B-C5A2-1CCF97C30CBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "buildprogram.gen", "Library\DotsRuntimeBuild\buildprogram.gen.csproj", "{DAC8AC0C-DF39-538B-DB0D-15BC7B63CF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarSlide.gen", "Assets\BarSlide\BarSlide.gen.csproj", "{B3F4E12E-8A29-C847-B74F-0C2DC00DC0DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarSlide.gen", "Assets\BarSlide\BarSlide.gen.csproj", "{E666B72D-0022-681D-7AD4-1D6B9786B5D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Entities.BuildUtilities", "Library\DotsRuntimeBuild\Unity.Entities.BuildUtilities.csproj", "{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5}"
 EndProject
@@ -20,26 +20,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity", "Unity", "{1B6D86D0
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		windows-il2cpp-debug|Default = windows-il2cpp-debug|Default
+		wasm-release|Default = wasm-release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{96030438-8AA4-A76B-C5A2-1CCF97C30CBF}.windows-il2cpp-debug|Default.ActiveCfg = Release|Any CPU
-		{B3F4E12E-8A29-C847-B74F-0C2DC00DC0DD}.windows-il2cpp-debug|Default.ActiveCfg = windows-il2cpp-debug|Any CPU
-		{B3F4E12E-8A29-C847-B74F-0C2DC00DC0DD}.windows-il2cpp-debug|Default.Build.0 = windows-il2cpp-debug|Any CPU
-		{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5}.windows-il2cpp-debug|Default.ActiveCfg = Release|Any CPU
-		{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5}.windows-il2cpp-debug|Default.Build.0 = Release|Any CPU
-		{CDAF4BA9-0F68-B1DD-A38E-0A06EDFD78AB}.windows-il2cpp-debug|Default.ActiveCfg = Release|Any CPU
-		{CDAF4BA9-0F68-B1DD-A38E-0A06EDFD78AB}.windows-il2cpp-debug|Default.Build.0 = Release|Any CPU
-		{7393908E-3929-C1B7-DBE0-F02C66F8F7A8}.windows-il2cpp-debug|Default.ActiveCfg = Release|Any CPU
-		{7393908E-3929-C1B7-DBE0-F02C66F8F7A8}.windows-il2cpp-debug|Default.Build.0 = Release|Any CPU
-		{95BE9475-7513-1D77-602F-DE1C691BFC25}.windows-il2cpp-debug|Default.ActiveCfg = windows-il2cpp-debug|Any CPU
-		{95BE9475-7513-1D77-602F-DE1C691BFC25}.windows-il2cpp-debug|Default.Build.0 = windows-il2cpp-debug|Any CPU
+		{DAC8AC0C-DF39-538B-DB0D-15BC7B63CF2B}.wasm-release|Default.ActiveCfg = Release|Any CPU
+		{E666B72D-0022-681D-7AD4-1D6B9786B5D7}.wasm-release|Default.ActiveCfg = wasm-release|Any CPU
+		{E666B72D-0022-681D-7AD4-1D6B9786B5D7}.wasm-release|Default.Build.0 = wasm-release|Any CPU
+		{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5}.wasm-release|Default.ActiveCfg = Release|Any CPU
+		{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5}.wasm-release|Default.Build.0 = Release|Any CPU
+		{CDAF4BA9-0F68-B1DD-A38E-0A06EDFD78AB}.wasm-release|Default.ActiveCfg = Release|Any CPU
+		{CDAF4BA9-0F68-B1DD-A38E-0A06EDFD78AB}.wasm-release|Default.Build.0 = Release|Any CPU
+		{7393908E-3929-C1B7-DBE0-F02C66F8F7A8}.wasm-release|Default.ActiveCfg = Release|Any CPU
+		{7393908E-3929-C1B7-DBE0-F02C66F8F7A8}.wasm-release|Default.Build.0 = Release|Any CPU
+		{95BE9475-7513-1D77-602F-DE1C691BFC25}.wasm-release|Default.ActiveCfg = wasm-release|Any CPU
+		{95BE9475-7513-1D77-602F-DE1C691BFC25}.wasm-release|Default.Build.0 = wasm-release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{96030438-8AA4-A76B-C5A2-1CCF97C30CBF} = {1D1C93E8-7F82-D831-5960-082115244F13}
+		{DAC8AC0C-DF39-538B-DB0D-15BC7B63CF2B} = {1D1C93E8-7F82-D831-5960-082115244F13}
 		{42529BFE-C7DC-1D63-1B6F-8F64D2B3E8E5} = {1D1C93E8-7F82-D831-5960-082115244F13}
 		{CDAF4BA9-0F68-B1DD-A38E-0A06EDFD78AB} = {1D1C93E8-7F82-D831-5960-082115244F13}
 		{7393908E-3929-C1B7-DBE0-F02C66F8F7A8} = {1D1C93E8-7F82-D831-5960-082115244F13}
@@ -47,6 +47,6 @@ Global
 		{1D1C93E8-7F82-D831-5960-082115244F13} = {1B6D86D0-12CB-792C-3DA5-CF5BFEE3205F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2270B92E-EB12-4B65-BB01-B9A5AE2B287C}
+		SolutionGuid = {731A2EA3-F17C-4CD8-9B5B-72638F9A607E}
 	EndGlobalSection
 EndGlobal

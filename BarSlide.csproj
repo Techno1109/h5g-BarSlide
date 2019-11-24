@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BarSlide\AspectManager\System\UiAspectManager.cs" />
+    <Compile Include="Assets\BarSlide\AspectManager\Tag\AspectManageTarget.cs" />
     <Compile Include="Assets\BarSlide\Component\GageComponent.cs" />
     <Compile Include="Assets\BarSlide\Component\GameState.cs" />
     <Compile Include="Assets\BarSlide\Component\GlassComponent.cs" />
@@ -73,7 +75,6 @@
     <Compile Include="Assets\BarSlide\System\OKCheckSystem.cs" />
     <Compile Include="Assets\BarSlide\System\ReplaySystem.cs" />
     <Compile Include="Assets\BarSlide\System\ScoreDrawSystem.cs" />
-    <Compile Include="Assets\BarSlide\System\WindowTween.cs" />
     <Compile Include="Assets\BarSlide\Tag\ActiveDelete.cs" />
     <Compile Include="Assets\BarSlide\Tag\CheckLineTag.cs" />
     <Compile Include="Assets\BarSlide\Tag\GlassTag.cs" />
@@ -84,89 +85,90 @@
     <Compile Include="Assets\BarSlide\Tag\ScoreTag.cs" />
     <Compile Include="Assets\BarSlide\Tag\StopWallTag.cs" />
     <Compile Include="Assets\BarSlide\Tag\TestButtonTag.cs" />
+    <None Include="Assets\BarSlide\AspectManager\ReadMe.txt" />
     <Reference Include="Unity.Collections">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Audio">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Audio.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Audio.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.AudioNative">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.AudioNative.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.AudioNative.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Core">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Core2D">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core2D.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core2D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Core2DTypes">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core2DTypes.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Core2DTypes.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.GLFW">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.GLFW.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.GLFW.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.HitBox2D">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.HitBox2D.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.HitBox2D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Image2D">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Image2D.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Image2D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Image2DIOSTB">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Image2DIOSTB.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Image2DIOSTB.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Input">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Input.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Input.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.InputGLFW">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.InputGLFW.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.InputGLFW.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.IO">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.IO.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.IO.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Particles">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Particles.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Particles.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.PointQuery">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.PointQuery.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.PointQuery.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Renderer">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Renderer.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Renderer.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.RendererGL">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.RendererGL.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.RendererGL.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.RendererGLNative">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.RendererGLNative.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.RendererGLNative.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Scenes">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Scenes.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Scenes.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Sprite2D">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Sprite2D.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Sprite2D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Text">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Text.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Text.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.Tweens">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Tweens.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.Tweens.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.UIControls">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.UIControls.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.UIControls.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tiny.UILayout">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.UILayout.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/Unity.Tiny.UILayout.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Users/keigo/Downloads/Desktop/Unity/2019.2.0b7/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -355,10 +357,10 @@
       <HintPath>C:/Users/keigo/Downloads/Desktop/Unity/2019.2.0b7/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/PackageCache/com.unity.burst@1.1.1/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/PackageCache/com.unity.burst@1.1.1/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>C:/Users/keigo/Downloads/Desktop/Git/h5g-BarSlide/Library/PackageCache/com.unity.collections@0.0.9-preview.20/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>F:/Git/h5g-BarSlide/Library/PackageCache/com.unity.collections@0.0.9-preview.20/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Users/keigo/Downloads/Desktop/Unity/2019.2.0b7/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -108,7 +108,7 @@ public class OKCheckSystem : ComponentSystem
                 //リザルトウィンドウを無効化
                 Entities.With(ResultQuery).ForEach((ref RectTransform RecTrans) =>
                 {
-                    RecTrans.anchoredPosition.y = 0;
+                    RecTrans.anchoredPosition.y = -500;
                 });
 
                 var GameStats = World.TinyEnvironment();
